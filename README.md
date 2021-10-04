@@ -1,6 +1,6 @@
 # Rebellion
 O projeto Rebellion foi desenvolvido para o processo seletivo do programa Talent da +A Educação. 
-[Acesse o projeto rodando clicando aqui :)](https://viniciusolro.github.io/rebellion/) e acesse o repositório do mesmo [clicando aqui](https://github.com/viniciusOlro/rebellion).
+[Acesse o projeto rodando clicando aqui](https://viniciusolro.github.io/rebellion/) e acesse o repositório do mesmo [clicando aqui](https://github.com/viniciusOlro/rebellion).
 
 As principais tecnologias utilizadas foram:
 
