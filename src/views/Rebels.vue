@@ -78,9 +78,9 @@
         <input type="submit" value="Atualizar!">
       </form>
     </div>
-    <div v-if="success " class="message">
+    <div v-if="success" class="message">
       <h1>Alteração realizada com sucesso!</h1>
-      <p>O seu cadastro foi atualizado.</p>
+      <p>A sua requisição foi executada com êxito.</p>
       <router-link to="/">Concluir</router-link>
     </div>
   </div>
@@ -93,52 +93,6 @@
     data() {
       return {
         rebelsArray: [],
-        // rebelsArrayFake: [
-        //   {
-        //     id: 1,
-        //     name: 'Vinícius',
-        //     planet: 'Marte',
-        //     birthDate: '17/01/2002',
-        //     description: 'teste'
-        //   },
-        //   {
-        //     id: 2,
-        //     name: 'Suelen',
-        //     planet: 'Terra',
-        //     birthDate: '17/01/2002',
-        //     description: 'teste'
-        //   },
-        //   {
-        //     id: 3,
-        //     name: 'Frajolinha',
-        //     planet: 'Terra',
-        //     birthDate: '17/01/2002',
-        //     description: 'teste'
-        //   }
-        // ],
-        // rebelsArrayFakeDefault: [
-        //   {
-        //     id: 1,
-        //     name: 'Vinícius',
-        //     planet: 'Marte',
-        //     birthDate: '17/01/2002',
-        //     description: 'teste'
-        //   },
-        //   {
-        //     id: 2,
-        //     name: 'Suelen',
-        //     planet: 'Terra',
-        //     birthDate: '17/01/2002',
-        //     description: 'teste'
-        //   },
-        //   {
-        //     id: 3,
-        //     name: 'Frajolinha',
-        //     planet: 'Terra',
-        //     birthDate: '17/01/2002',
-        //     description: 'teste'
-        //   }
-        // ],
         isEditing: false,
         idRebelEdit: '',
         rebelNameEdit: '',
@@ -156,6 +110,11 @@
       }
     },
     methods: {
+      formatDate(date) {
+        let splitDate = date.split('-', 3).reverse()
+        let joinDate = splitDate.join('/')
+        return joinDate
+      },
       getAllRebels() {
         const axios = require('axios')
         axios.get('https://test-mais-a-educacao-v1.herokuapp.com/?token=viniciusDeOliveiraRodrigues').then((res) => {
@@ -168,7 +127,7 @@
       removeRebel(id) {
         const axios = require('axios')
         axios.delete(`https://test-mais-a-educacao-v1.herokuapp.com/${id}?token=viniciusDeOliveiraRodrigues`).then((res) => {
-         location.reload()
+         this.resetCards()
         }).catch((error) => {
           console.log(error)
         })
@@ -193,14 +152,15 @@
         const rebel = {
           name: this.rebelNameEdit,
           planet: this.planetNameEdit,
-          birthDate: this.birthdayDateEdit,
+          birthDate: this.formatDate(this.birthdayDateEdit),
           description: this.reasonsEdit
         }
-        axios.put(`https://test-mais-a-educacao-v1.herokuapp.com/${id}?token=viniciusDeOliveiraRodrigues`, rebel).then((res) => {
-          this.success = true
-        }).catch((error) => {
-          console.log(error);
-        })
+          axios.put(`https://test-mais-a-educacao-v1.herokuapp.com/${id}?token=viniciusDeOliveiraRodrigues`, rebel).then((res) => {
+            this.success = true
+          }).catch((error) => {
+            console.log(error);
+          })
+        
       },
       selectSearchType(e) {
         let option = e.target.value

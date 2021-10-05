@@ -17,3 +17,5 @@ podemos vislumbrar, destaca-se:
 - Lapidar a responsividade do layout para tornar a experiência do usuário melhor;
 - Documentar os elementos do código com comentários explicativos;
 - Adicionar um gerenciamento de usuários cadastrados com autenticação para acesso dos mestres Jedi's.
+- Corrigir a lógica da filtragem de datas
+- Tornar as validações dos formulários mais robustas.

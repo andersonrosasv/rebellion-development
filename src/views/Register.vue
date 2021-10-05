@@ -67,12 +67,10 @@
           description: this.reasonText
         }
         axios.post('https://test-mais-a-educacao-v1.herokuapp.com/?token=viniciusDeOliveiraRodrigues', rebel).then((res) => {
-          console.log('foi')
-          console.log(res)
+          this.registered = true
         }).catch((error) => {
           console.log(error)
         })
-        this.registered = true
       },
       
     }
